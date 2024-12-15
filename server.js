@@ -178,14 +178,17 @@ const express = require('express');
 const axios = require('axios');
 const dotenv = require('dotenv');
 const cors = require('cors');
+
+// Initialize the Express app
+const app = express();
+
 app.use(cors());
 
 
 // Load environment variables from .env file
 dotenv.config();
 
-// Initialize the Express app
-const app = express();
+
 const PORT = process.env.PORT || 3000;
 
 // GitHub GraphQL API URL
