@@ -567,3 +567,6 @@ app.get('/github-wrapped/:username', async (req, res) => {
 // app.listen(PORT, () => {
 //   console.log(`Server is running on http://localhost:${PORT}`);
 // });
+
+// Export the handler for Vercel
+module.exports = app;
