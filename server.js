@@ -243,7 +243,7 @@ const getMostActiveDay = (contributionCalendar) => {
     contributionCalendar.weeks.forEach(week => {
       week.contributionDays.forEach(day => {
         const date = new Date(day.date);
-        if (date.getFullYear() === 2024 && day.contributionCount > maxContributions) {
+        if (date.getFullYear() === 2025 && day.contributionCount > maxContributions) {
           maxContributions = day.contributionCount;
           mostActiveDay = day.date;
         }
@@ -274,7 +274,7 @@ const getMostActiveDay = (contributionCalendar) => {
     contributionCalendar.weeks.forEach(week => {
       week.contributionDays.forEach(day => {
         const date = new Date(day.date);
-        if (date.getFullYear() === 2024) {
+        if (date.getFullYear() === 2025) {
           if (day.contributionCount > 0) {
             currentStreak++;
             longestStreak = Math.max(longestStreak, currentStreak);
@@ -319,8 +319,8 @@ const calculateMostUsedLanguages = (repositories) => {
   };
 
   
-  const getReposIn2024 = (repositories) => {
-    return repositories.filter(repo => new Date(repo.createdAt).getFullYear() === 2024);
+  const getReposIn2025 = (repositories) => {
+    return repositories.filter(repo => new Date(repo.createdAt).getFullYear() === 2025);
   };
 
   
@@ -329,11 +329,11 @@ const calculateMostUsedLanguages = (repositories) => {
   };
 
   
-  const getPRsAndIssuesIn2024 = (prIssues) => {
-    const prsIn2024 = prIssues.pullRequests.filter(pr => new Date(pr.createdAt).getFullYear() === 2024);
-    const issuesIn2024 = prIssues.issues.filter(issue => new Date(issue.createdAt).getFullYear() === 2024);
+  const getPRsAndIssuesIn2025 = (prIssues) => {
+    const prsIn2025 = prIssues.pullRequests.filter(pr => new Date(pr.createdAt).getFullYear() === 2025);
+    const issuesIn2025 = prIssues.issues.filter(issue => new Date(issue.createdAt).getFullYear() === 2025);
   
-    return { prsIn2024, issuesIn2024 };
+    return { prsIn2025, issuesIn2025 };
   };
 
   
@@ -354,9 +354,9 @@ const generateGitHubWrapped = async (username) => {
     const longestStreak = getLongestStreak(contributionStats);
     const mostUsedLanguages = calculateMostUsedLanguages(repositories);
     const mostStarredRepo = getMostStarredRepo(starredRepos);
-    const reposIn2024 = getReposIn2024(repositories);
+    const reposIn2025 = getReposIn2025(repositories);
     const mergesDone = getMergesDone(prIssues.pullRequests);
-    const prsAndIssuesIn2024 = getPRsAndIssuesIn2024(prIssues);
+    const prsAndIssuesIn2025 = getPRsAndIssuesIn2025(prIssues);
 
     return {
       profileData,
@@ -365,9 +365,9 @@ const generateGitHubWrapped = async (username) => {
       longestStreak,
       mostUsedLanguages,
       mostStarredRepo,
-      reposIn2024,
+      reposIn2025,
       mergesDone,
-      prsAndIssuesIn2024,
+      prsAndIssuesIn2025,
     };
   } catch (error) {
     console.error('Error fetching data from GitHub:', error);
